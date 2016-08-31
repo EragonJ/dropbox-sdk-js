@@ -76,14 +76,10 @@ downloadRequest = function (path, args, accessToken, selectUser) {
     }
 
     // Apply the node binary parser to the response if executing in node
-    if (typeof window === 'undefined') {
-      apiRequest
-        .buffer(true)
-        .parse(nodeBinaryParser)
-        .end(responseHandler);
-    } else {
-      apiRequest.end(responseHandler);
-    }
+    apiRequest
+      .buffer(true)
+      .parse(nodeBinaryParser)
+      .end(responseHandler);
   };
 
   return new Promise(promiseFunction);
